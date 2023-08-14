@@ -18,5 +18,10 @@ extension CDArticle {
 
     @NSManaged public var url: String?
     @NSManaged public var title: String?
+    
+    func convertToArticle() -> Article
+    {
+        return Article(title: self.title, url: self.url)
+    }
 
 }

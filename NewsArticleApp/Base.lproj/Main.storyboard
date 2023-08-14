@@ -19,6 +19,10 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="8uf-no-W9o">
                                 <rect key="frame" x="0.0" y="103" width="393" height="715"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="EAk-VD-cas"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="e7Q-6M-eGs"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -31,10 +35,47 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="EXk-F5-xvP"/>
+                    <connections>
+                        <outlet property="tblArticles" destination="8uf-no-W9o" id="XFk-hj-XGD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="918.32061068702285" y="3.5211267605633805"/>
+        </scene>
+        <!--Article DetailsVC-->
+        <scene sceneID="ZF3-0Y-ito">
+            <objects>
+                <viewController storyboardIdentifier="ArticleDetailsVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="aR5-c1-ovf" customClass="ArticleDetailsVC" customModule="NewsArticleApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="leQ-Rl-iTr">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QJQ-xx-0wM">
+                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="gOY-za-1ed"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="gOY-za-1ed" firstAttribute="trailing" secondItem="QJQ-xx-0wM" secondAttribute="trailing" id="7Ms-fn-eWh"/>
+                            <constraint firstItem="QJQ-xx-0wM" firstAttribute="top" secondItem="gOY-za-1ed" secondAttribute="top" id="EDK-QJ-AXi"/>
+                            <constraint firstItem="QJQ-xx-0wM" firstAttribute="leading" secondItem="gOY-za-1ed" secondAttribute="leading" id="Vn7-MU-OQO"/>
+                            <constraint firstItem="gOY-za-1ed" firstAttribute="bottom" secondItem="QJQ-xx-0wM" secondAttribute="bottom" id="qgB-26-uY4"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="QJQ-xx-0wM" id="qYa-TP-TeS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BTy-1U-FLy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1595" y="9"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Mpo-1B-hW2">

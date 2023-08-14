@@ -9,6 +9,7 @@ import Foundation
 
 // MARK: - Welcome
 struct ArticlesModel: Codable {
+    
     var status: String?
     var totalResults: Int?
     var articles: [Article]?
@@ -22,7 +23,7 @@ struct Article: Codable {
     var description: String?
     var url: String?
     var urlToImage: String?
-    var publishedAt: Date?
+    var publishedAt: String?
     var content: String?
 }
 

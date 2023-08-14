@@ -20,6 +20,7 @@
 		844CB6072A8A4241007538BE /* ArticlesListingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844CB6062A8A4241007538BE /* ArticlesListingVC.swift */; };
 		844CB6092A8A4258007538BE /* ArticlesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844CB6082A8A4258007538BE /* ArticlesListViewModel.swift */; };
 		844CB60B2A8A4414007538BE /* PersistentStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844CB60A2A8A4414007538BE /* PersistentStorage.swift */; };
+		844CB60E2A8A460D007538BE /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844CB60D2A8A460D007538BE /* APIService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		844CB6062A8A4241007538BE /* ArticlesListingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesListingVC.swift; sourceTree = "<group>"; };
 		844CB6082A8A4258007538BE /* ArticlesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesListViewModel.swift; sourceTree = "<group>"; };
 		844CB60A2A8A4414007538BE /* PersistentStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentStorage.swift; sourceTree = "<group>"; };
+		844CB60D2A8A460D007538BE /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 		844CB5CC2A8A419D007538BE /* NewsArticleApp */ = {
 			isa = PBXGroup;
 			children = (
+				844CB60C2A8A45B9007538BE /* APIService */,
 				844CB6032A8A41FE007538BE /* CDModels */,
 				844CB6022A8A41ED007538BE /* Models */,
 				844CB6012A8A41E0007538BE /* ArticleDetails */,
@@ -169,6 +172,14 @@
 			children = (
 			);
 			path = CDModels;
+			sourceTree = "<group>";
+		};
+		844CB60C2A8A45B9007538BE /* APIService */ = {
+			isa = PBXGroup;
+			children = (
+				844CB60D2A8A460D007538BE /* APIService.swift */,
+			);
+			path = APIService;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -308,6 +319,7 @@
 				844CB6092A8A4258007538BE /* ArticlesListViewModel.swift in Sources */,
 				844CB6052A8A421E007538BE /* ArticlesModel.swift in Sources */,
 				844CB5D02A8A419D007538BE /* SceneDelegate.swift in Sources */,
+				844CB60E2A8A460D007538BE /* APIService.swift in Sources */,
 				844CB60B2A8A4414007538BE /* PersistentStorage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

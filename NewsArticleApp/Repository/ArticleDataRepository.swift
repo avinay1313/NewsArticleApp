@@ -21,6 +21,11 @@ struct ArticleDataRepository : ArticleRepository
             let cdArticle = CDArticle(context: PersistentStorage.shared.context)
             cdArticle.title = article.title
             cdArticle.url = article.url
+            cdArticle.articleDescription = article.description
+            cdArticle.author = article.author
+            cdArticle.publishedAt = article.publishedAt
+            cdArticle.urlToImage = article.urlToImage
+            cdArticle.content = article.content
 
             PersistentStorage.shared.saveContext()
         }

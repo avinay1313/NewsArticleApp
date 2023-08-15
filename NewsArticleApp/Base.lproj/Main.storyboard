@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="8uf-no-W9o">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="8uf-no-W9o">
                                 <rect key="frame" x="0.0" y="103" width="393" height="715"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <connections>
@@ -24,18 +24,25 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="e7Q-6M-eGs"/>
                                 </connections>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="hpH-3m-kBn">
+                                <rect key="frame" x="178" y="407.66666666666669" width="37" height="37"/>
+                                <color key="color" red="0.20784313730000001" green="0.33333333329999998" blue="0.69019607839999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="8uf-no-W9o" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="4rk-BE-ST3"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="8uf-no-W9o" secondAttribute="bottom" id="UCR-gD-vfm"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="8uf-no-W9o" secondAttribute="trailing" id="i8z-42-In4"/>
-                            <constraint firstItem="8uf-no-W9o" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="sHr-hs-hEV"/>
+                            <constraint firstItem="8uf-no-W9o" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="9M6-6w-rZ0"/>
+                            <constraint firstItem="8uf-no-W9o" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="D22-nS-HEk"/>
+                            <constraint firstItem="8uf-no-W9o" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="eAO-b7-vhJ"/>
+                            <constraint firstItem="8uf-no-W9o" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="xyU-FX-UlT"/>
+                            <constraint firstItem="hpH-3m-kBn" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="yMZ-Lb-ViM"/>
+                            <constraint firstItem="hpH-3m-kBn" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="zsg-hC-HC8"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="EXk-F5-xvP"/>
                     <connections>
+                        <outlet property="loadingView" destination="hpH-3m-kBn" id="TV2-dH-Yrt"/>
                         <outlet property="tblArticles" destination="8uf-no-W9o" id="XFk-hj-XGD"/>
                     </connections>
                 </viewController>
@@ -50,28 +57,9 @@
                     <view key="view" contentMode="scaleToFill" id="leQ-Rl-iTr">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QJQ-xx-0wM">
-                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <wkWebViewConfiguration key="configuration">
-                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                                    <wkPreferences key="preferences"/>
-                                </wkWebViewConfiguration>
-                            </wkWebView>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="gOY-za-1ed"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="gOY-za-1ed" firstAttribute="trailing" secondItem="QJQ-xx-0wM" secondAttribute="trailing" id="7Ms-fn-eWh"/>
-                            <constraint firstItem="QJQ-xx-0wM" firstAttribute="top" secondItem="gOY-za-1ed" secondAttribute="top" id="EDK-QJ-AXi"/>
-                            <constraint firstItem="QJQ-xx-0wM" firstAttribute="leading" secondItem="gOY-za-1ed" secondAttribute="leading" id="Vn7-MU-OQO"/>
-                            <constraint firstItem="gOY-za-1ed" firstAttribute="bottom" secondItem="QJQ-xx-0wM" secondAttribute="bottom" id="qgB-26-uY4"/>
-                        </constraints>
                     </view>
-                    <connections>
-                        <outlet property="webView" destination="QJQ-xx-0wM" id="qYa-TP-TeS"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BTy-1U-FLy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

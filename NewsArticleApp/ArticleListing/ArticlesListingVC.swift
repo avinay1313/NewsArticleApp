@@ -6,10 +6,13 @@
 //
 
 import UIKit
+import SDWebImage
 
 class ArticlesListingVC: UIViewController {
     
     @IBOutlet weak var tblArticles: UITableView!
+    
+    @IBOutlet weak var loadingView: UIActivityIndicatorView!
     
     let viewModel = ArticlesListViewModel()
 
@@ -20,9 +23,12 @@ class ArticlesListingVC: UIViewController {
         self.title = "Latest News"
         self.navigationController?.title = "Latest News"
 
-        self.tblArticles.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
-        
+        self.tblArticles.register(UINib(nibName: "ArticleListCell", bundle: nil), forCellReuseIdentifier: "ArticleListCell")
+
+        self.loadingView.startAnimating()
         self.viewModel.getArticles { status in
+            self.loadingView.stopAnimating()
+            self.loadingView.isHidden = true
             if status {
                 self.tblArticles.reloadData()
             }
@@ -43,9 +49,8 @@ extension ArticlesListingVC: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")! as UITableViewCell
-        cell.textLabel?.numberOfLines = 0
-        cell.textLabel?.text = article.title
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ArticleListCell")! as! ArticleListCell
+        cell.setupUI(article: article)
         return cell
     }
     
@@ -57,6 +62,5 @@ extension ArticlesListingVC: UITableViewDelegate, UITableViewDataSource {
         let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "ArticleDetailsVC") as? ArticleDetailsVC
         vc?.articles = article
         self.navigationController?.pushViewController(vc!, animated: true)
-        
     }
 }

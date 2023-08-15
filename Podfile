@@ -8,6 +8,7 @@ target 'NewsArticleApp' do
   # Pods for NewsArticleApp
   pod 'Alamofire', '~> 5.4.4'
   pod 'SwiftyJSON'
+  pod 'SDWebImage', '~> 5.0'
 
   target 'NewsArticleAppTests' do
     inherit! :search_paths

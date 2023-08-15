@@ -16,24 +16,21 @@ class ArticleDetailsVC: UIViewController {
     var loadingView: UIActivityIndicatorView!
 
     var articles: Article?
-    
-    override func loadView() {
-        webView = WKWebView()
-        webView.navigationDelegate = self
-        view = webView
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-                
+        
+        setupWebview()
         setupLoadingView()
-        
-        let url = URL(string: articles?.url ?? "")!
-        let request = URLRequest(url: url, cachePolicy: .returnCacheDataElseLoad, timeoutInterval: 50)
-        webView.load(request)
-        webView.allowsBackForwardNavigationGestures = true
-        
-//        self.loadingView.startAnimating()
+        loadWebview()
+    }
+    
+    private func setupWebview() {
+        webView = WKWebView(frame: self.view.frame)
+        webView.translatesAutoresizingMaskIntoConstraints = false
+        webView.navigationDelegate = self
+        webView.uiDelegate = self
+        view.addSubview(self.webView)
     }
     
     private func setupLoadingView() {
@@ -44,34 +41,40 @@ class ArticleDetailsVC: UIViewController {
         view.bringSubviewToFront(loadingView)
     }
     
-    private func stopLoadingView() {
-        self.loadingView.stopAnimating()
-        self.loadingView.isHidden = true
+    private func loadWebview() {
+        let url = URL(string: articles?.url ?? "")!
+        let request = URLRequest(url: url, cachePolicy: .returnCacheDataElseLoad, timeoutInterval: 60)
+        webView.load(request)
+        webView.allowsBackForwardNavigationGestures = true
+    }
+    
+    private func manageLoadinView(status: Bool) {
+        if status {
+            loadingView.startAnimating()
+            loadingView.isHidden = false
+        } else {
+            loadingView.stopAnimating()
+            loadingView.isHidden = true
+        }
     }
 }
 
 extension ArticleDetailsVC: WKNavigationDelegate {
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-        // show indicator
+        self.manageLoadinView(status: true)
     }
 
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-        // dismiss indicator
-        self.stopLoadingView()
-        // if url is not valid {
-        //    decisionHandler(.cancel)
-        // }
+        self.manageLoadinView(status: false)
         decisionHandler(.allow)
     }
 
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        // dismiss indicator
-        self.stopLoadingView()
+        self.manageLoadinView(status: false)
     }
 
     func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
-      // show error dialog
-        self.stopLoadingView()
+        self.manageLoadinView(status: false)
     }
 }
 
